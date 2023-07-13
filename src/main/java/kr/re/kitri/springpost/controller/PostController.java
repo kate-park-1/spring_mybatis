@@ -2,13 +2,19 @@ package kr.re.kitri.springpost.controller;
 
 import kr.re.kitri.springpost.model.Post;
 import kr.re.kitri.springpost.service.PostService;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Slf4j
 @RestController
 public class PostController {
+//    private static final Logger log =
+//            LoggerFactory.getLogger(PostController.class);
 
     @Autowired
     private PostService postService;
@@ -17,6 +23,8 @@ public class PostController {
     public List<Post> viewAllPosts(){ // api에서는 자가객체인 list를 api의 표준 타입인 json으로 바꿔서 던져준다.
         // 자바객체는 json과 패러다임이 동일해서 스프링에내장되어 있는 converter(json parser 중의 하나인 잭슨 라이브러리)에 의해 변환된다.
         // 스프링부트가 jackson 라이브러리를 사용하도록 자동 설정,내장되어 있다.
+        log.debug("Post -- 젠체보기 진행중");
+        //System.out.println(10/0);
         return postService.getAllPosts();
     }
 

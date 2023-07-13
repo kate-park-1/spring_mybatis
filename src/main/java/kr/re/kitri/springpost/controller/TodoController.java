@@ -18,9 +18,9 @@ public class TodoController {
         return todoService.getAllTodos();
     }
 
-    @GetMapping("/todos/{todoId}")
-    public Todo viewTodoById(@PathVariable long todoId){
-        return todoService.getTodoById(todoId);
+    @GetMapping("/todos/{id}")
+    public Todo viewTodoById(@PathVariable int id){
+        return todoService.getTodoById(id);
     }
 
     @PostMapping("/todos") // api에서는 요청바디에 json 형태로 요청자료를 넘겨준다.
@@ -29,14 +29,14 @@ public class TodoController {
         return todoService.setTodo(todo);
     }
 
-    @PutMapping("/todos/{todoId}")
-    public Todo modifyTodo(@PathVariable long todoId){
-        return todoService.modifyTodo(todoId);
+    @PutMapping("/todos/{id}")
+    public void modifyTodo(@PathVariable int id){
+        todoService.modifyTodo(id);
     }
 
-    @DeleteMapping("/todos/{todoId}") // 문자형태인 숫자를 long으로 타입 변환, 그러므로 aaa 와 같이 문자열을 입력하면 변환 오류 발생한다.
-    public Todo removeTodo(@PathVariable long todoId){
-        return todoService.removeTodo(todoId);
+    @DeleteMapping("/todos/{id}") // 문자형태인 숫자를 long으로 타입 변환, 그러므로 aaa 와 같이 문자열을 입력하면 변환 오류 발생한다.
+    public void removeTodo(@PathVariable int id){
+        todoService.removeTodo(id);
     }
 
 }

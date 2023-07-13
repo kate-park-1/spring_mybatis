@@ -1,36 +1,24 @@
 package kr.re.kitri.springpost.repository;
 
 import kr.re.kitri.springpost.model.Todo;
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Repository
-public class TodoRepository {
+//@Repository  // mapper 등록하면 @Repository둥록 안해도 component로 등록된다.
+@Mapper
+public interface TodoRepository {
 
-    public List<Todo> selectAllTodos() {
-        List<Todo> todos = new ArrayList<>();
-        todos.add(new Todo(1,"todo1", false));
-        todos.add(new Todo(2,"todo2", false));
-        todos.add(new Todo(3,"todo3", false));
-        return todos;
-    }
+    List<Todo> selectAllTodos() ;
 
-    public Todo selectTodoById(long todoId) {
-        return new Todo(todoId,"testTodo", false);
-    }
+    Todo selectTodoById(int id) ;
 
-    public Todo insertTodo(Todo todo) {
-        return todo;
-    }
+    void insertTodo(Todo todo) ;
 
-    public Todo modifyTodo(long todoId) {
-        return new Todo(todoId,"modifiedTodo", true);
-    }
+    void modifyTodo(int id);
 
-    public Todo deleteTodo(long todoId) {
-        return new Todo(todoId,"deleteTodo", false);
-    }
+    void deleteTodo(int iId) ;
 
 }

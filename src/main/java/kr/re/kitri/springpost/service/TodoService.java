@@ -17,20 +17,22 @@ public class TodoService {
         return todoRepository.selectAllTodos();
     }
 
-    public Todo getTodoById(long todoId) {
-        return todoRepository.selectTodoById(todoId);
+    public Todo getTodoById(int id) {
+        return todoRepository.selectTodoById(id);
     }
 
     public Todo setTodo(Todo todo) {
-        return todoRepository.insertTodo(todo);
+        todoRepository.insertTodo(todo);
+        return todo;
     }
 
-    public Todo modifyTodo(long todoId) {
-        return todoRepository.modifyTodo(todoId);
+    public void modifyTodo(int id) {
+        todoRepository.modifyTodo(id);
     }
 
-    public Todo removeTodo(long todoId) {
-        return todoRepository.deleteTodo(todoId);
+    public void removeTodo(int id) {
+
+        todoRepository.deleteTodo(id);
     }
 
 }

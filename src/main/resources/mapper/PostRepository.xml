@@ -32,7 +32,8 @@
     </delete>
 
     <update id="updatePost" parameterType="kr.re.kitri.springpost.model.Post">
-        UPDATE post set title = #{title}, body = #{body}, likes = #{likes}
+        UPDATE post
+        SET title = #{title}, body = #{body}, likes = #{likes}
         WHERE post_id = #{postId}
     </update>
 </mapper>
